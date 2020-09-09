@@ -1,0 +1,13 @@
+dist: xenial
+language: php
+
+php:
+  - 7.2
+  - 7.3
+  - 7.4
+
+script:
+  - phpize
+  - ./configure
+  - make
+    #  - REPORT_EXIT_STATUS=1 NO_INTERACTION=1 TEST_PHP_ARGS="--show-diff" make test # TODO: actually add tests
