@@ -4,7 +4,7 @@
 ARG_ENABLE("morton", "Enable libmorton binding extension", "no");
 
 if (PHP_MORTON != "no") {
-	EXTENSION("morton", "morton.cpp", PHP_MORTON_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 /I" + configure_module_dirname);
+	EXTENSION("morton", "morton.cpp", PHP_MORTON_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 /I" + configure_module_dirname + " /I" + configure_module_dirname + "/libmorton/libmorton/include");
 	ADD_FLAG("CFLAGS_MORTON", "/EHsc");
 }
 
