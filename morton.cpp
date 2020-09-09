@@ -81,7 +81,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_morton2d_decode, 0, 1, IS_ARRAY,
 ZEND_END_ARG_INFO()
 
 PHP_FUNCTION(morton2d_decode) {
-	const auto SHIFT = (sizeof(zend_long) * 8) - 32;
+	const size_t SHIFT = (sizeof(zend_long) * 8) - 32;
 	zend_long morton;
 	uint_fast32_t x, y;
 
@@ -101,7 +101,7 @@ ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_morton3d_decode, 0, 1, IS_ARRAY,
 ZEND_END_ARG_INFO()
 
 PHP_FUNCTION(morton3d_decode) {
-	const auto SHIFT = (sizeof(zend_long) * 8) - 21;
+	const size_t SHIFT = (sizeof(zend_long) * 8) - 21;
 	zend_long morton;
 	uint_fast32_t x, y, z;
 
