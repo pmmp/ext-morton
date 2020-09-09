@@ -76,9 +76,50 @@ PHP_FUNCTION(morton3d_encode) {
 	RETURN_LONG(static_cast<zend_long>(libmorton::morton3D_64_encode(x, y, z)));
 }
 
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_morton2d_decode, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, morton, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+PHP_FUNCTION(morton2d_decode) {
+	zend_long morton;
+	uint64_t x, y;
+
+	ZEND_PARSE_PARAMETERS_START_EX(ZEND_PARSE_PARAMS_THROW, 1, 1)
+		Z_PARAM_LONG(morton)
+	ZEND_PARSE_PARAMETERS_END();
+
+	libmorton::morton2D_64_decode(morton, x, y);
+
+	array_init_size(return_value, 2);
+	add_next_index_long(return_value, x);
+	add_next_index_long(return_value, y);
+}
+
+ZEND_BEGIN_ARG_WITH_RETURN_TYPE_INFO_EX(arginfo_morton3d_decode, 0, 1, IS_ARRAY, 0)
+	ZEND_ARG_TYPE_INFO(0, morton, IS_LONG, 0)
+ZEND_END_ARG_INFO()
+
+PHP_FUNCTION(morton3d_decode) {
+	zend_long morton;
+	uint64_t x, y, z;
+
+	ZEND_PARSE_PARAMETERS_START_EX(ZEND_PARSE_PARAMS_THROW, 1, 1)
+		Z_PARAM_LONG(morton)
+	ZEND_PARSE_PARAMETERS_END();
+
+	libmorton::morton3D_64_decode(morton, x, y, z);
+
+	array_init_size(return_value, 3);
+	add_next_index_long(return_value, x);
+	add_next_index_long(return_value, y);
+	add_next_index_long(return_value, z);
+}
+
 static const zend_function_entry morton_functions[] = {
 	PHP_FE(morton2d_encode, arginfo_morton2d_encode)
 	PHP_FE(morton3d_encode, arginfo_morton3d_encode)
+	PHP_FE(morton2d_decode, arginfo_morton2d_decode)
+	PHP_FE(morton3d_decode, arginfo_morton3d_decode)
 	PHP_FE_END
 };
 
