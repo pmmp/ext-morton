@@ -31,9 +31,9 @@ PHP_MINFO_FUNCTION(morton)
 	php_info_print_table_header(2, "morton support", "enabled");
 	php_info_print_table_row(2, "morton intrinsics",
 #if defined(__AVX512BITALG__)
-			"AVX512",
+			"AVX512"
 #elif defined(__BMI2__) || defined(__AVX2__)
-			"BMI2",
+			"BMI2"
 #else
 			"not used"
 #endif
