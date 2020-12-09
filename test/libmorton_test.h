@@ -2,6 +2,7 @@
 
 // Standard headers
 #include <cstdlib>
+#include <math.h>
 #include <iostream>
 #include <sstream>
 #include <chrono>
@@ -21,6 +22,14 @@
 #include "morton_LUT_generators.h"
 #include "../libmorton/include/morton2D.h"
 #include "../libmorton/include/morton3D.h"
+#if defined(__BMI2__) || (defined(__AVX2__) && defined(_MSC_VER))
+#include "morton_BMI.h"
+#endif
+#if defined(__AVX512BITALG__)
+#include "morton_AVX512BITALG.h"
+#endif
+
+// Load main morton include file (should be unnecessary)
 #include "../libmorton/include/morton.h"
 
 using std::string;
