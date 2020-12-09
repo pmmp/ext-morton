@@ -4,7 +4,7 @@
 extern zend_module_entry morton_module_entry;
 # define phpext_morton_ptr &morton_module_entry
 
-# define PHP_MORTON_VERSION "0.1.1"
+# define PHP_MORTON_VERSION "0.1.2"
 
 #ifdef ZTS
 #include "TSRM.h"
